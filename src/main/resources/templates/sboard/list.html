@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+<style type="text/css">
+.bb{
+	float: right;
+}
+</style>
+
+</head>
+<body class="container">
+
+	
+	<div class="jumbotron">
+		<h2>게시판 목록</h2>
+	</div>
+	
+	<div class="bb">	
+		<button type="button" onclick="location.href='/sboard/insert'">글쓰기</button>
+	</div>
+	
+	<div>
+		<table class="table">
+			<thead><tr>
+				<th scope="col">글번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성자</th>
+				<th scope="col">조회수</th>
+				<th scope="col">날짜</th>
+			</tr></thead> 
+			
+		<tbody th:each="data : ${list}">
+			<tr>
+				<td><a> [[${data.sno}]]</a></td>
+				<td><a th:href="'/sboard/detail/'+${data.sno}"> [[${data.stitle}]]</a></td>
+				<td><a> [[${data.sname}]]</a></td>
+				<td><a> [[${data.suphit}]]</a></td>
+				<td><a> [[${data.sdate}]]</a></td>		
+			</tr>		
+		</tbody>	
+		</table>
+	</div>
+	
+	 <nav style="text-align: center;">
+        <ul class="pagination">
+            <li class="disabled">
+                <a href="" aria-label="First">
+                    <span aria-hidden="true">First</span>
+                </a>
+            </li>
+            <li class="disabled">
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </a>
+            </li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" aria-label="Last">
+                    <span aria-hidden="true">Last</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+</html>

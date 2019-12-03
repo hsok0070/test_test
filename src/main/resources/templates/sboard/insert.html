@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert</title>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+<style type="text/css">
+
+#content{
+	width: 70%;
+	height: 50%;
+}
+
+</style>
+
+</head>
+<body id="background">
+	
+	<div id="top">
+		<h2>게시글 작성</h2>
+	</div>
+
+	<div class="container">
+		<form action="#" th:action="@{/sboard/insertProc}" method="post">
+			
+			<div class="form-group">
+				<label for="stitle">제목</label><br> 
+				<input type="text" id="stitle" name="stitle" placeholder="제목" />
+			</div>
+			<div class="form-group">
+				<label for="sname">작성자</label> <br>
+				<input type="text" id="sname" name="sname" placeholder="작성자" />
+			</div>
+			<div class="form-group">
+				<label for="scontent">내용</label><br>
+				<textarea rows="2" cols="1" id="scontent" name="scontent" placeholder="내용을 입력하세요"></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary">작성</button>
+			<button type="reset" class="btn btn-primary">취소</button>
+
+		</form>
+
+	</div>
+
+
+</body>
+</html>

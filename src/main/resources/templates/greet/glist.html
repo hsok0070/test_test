@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/list.css}"
+	href="../../static/list.css" />
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<script src="//code.jquery.com/jquery.min.js"></script>
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			
+			<div id="top-title">
+				<h1>방명록</h1>
+			</div>
+		
+			<div id="top-right">
+				<button type="button" onclick="location.href='/greet/greetings'"
+					class="btn-write">방명록 쓰기</button>
+			</div>
+		</div>
+		<div id="wrap-table">
+
+			<table id="tlist">
+				<thead class="thead-list">
+					<tr>
+						<th scope="col" class="no">글번호</th>
+						<th scope="col" class="name">작성자</th>
+						<th scope="col" class="content">방명록</th>
+						<th scope="col" class="date">날짜</th>
+						<th scope="col" class="buttons">수정/삭제</th>
+
+					</tr>
+				</thead>
+				<tbody th:each="data : ${glist}">
+					<tr>
+						<td class="no"><span> [[${data.gno}]]</span></td>
+						<td class="name"><span> [[${data.gname}]]</span></td>
+						<td class="content"><span> [[${data.greet}]]</span></td>
+						<td class="date"><span> [[${data.gdate}]]</span></td>
+		
+						<td><a href="./greetDetail/" th:attrappend="href=${data.gno}"
+							class="tbtn">수정</a> 
+							
+							<a href="./greetDelete/"
+							th:attrappend="href=${data.gno}" class="tbtn">삭제</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</article>
+
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>board list</title>
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/list.css}"
+	href="../../static/list.css" />
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+	
+	<div id="top">
+		<div id="top-title">
+			<h1>상담 게시판</h1>
+		</div> 
+		<div id="top-search">
+			<label for="label"> 검색 </label>
+			<input type="search" placeholder="search">
+		</div>	
+		<div id="write">
+			<a th:href="writeBoard" class="btn"> 글쓰기 </a>
+		</div>
+	</div>
+
+		<div id="wrap-table">
+		
+		<table id="blist">
+			<thead class="thead-list">
+			<tr>
+				<th class="no">번호</th>
+				<th class="content">제목</th>
+				<th class="name">작성자</th>
+				<th class="date">등록일</th>
+				<th class="uphit">조회수</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr th:each="board : ${boardList}">
+				<td th:text="${board.no}" class="no"></td>
+				<td class="title">
+				<th:block th:if="${board.depth}>1">
+					<th:block th:each="num: ${#numbers.sequence(1,board.depth)}">
+        			&nbsp;
+    				</th:block>
+					<th:block th:each="num: ${#numbers.sequence(2,board.depth)}">
+        			↪
+    				</th:block>
+				</th:block> <a th:href="@{./getBoard(board=${board.no})}" th:text="${board.title}" class="title"></a>
+				</td>
+				<td th:text="${board.name}" class="name"></td>
+				<td th:text="${#dates.format(board.wdate,'yyyy-MM-dd hh:mm')}" class="date"></td>
+				<td th:text="${board.upHit}" class="uphit"></td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+		
+
+	</article>
+	
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

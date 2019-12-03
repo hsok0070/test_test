@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>게시글 목록</title>
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/list.css}"
+	href="../../static/list.css" />
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<script src="//code.jquery.com/jquery.min.js"></script>
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+
+			<div id="top-title">
+				<h1>이미지 게시판</h1>
+			</div>
+
+			<div class="btn-write">
+				<a th:href="@{insertBoard}"> 글쓰기 </a>
+			</div>
+		</div>
+		<div id="wrap-table">
+
+			<table id="tlist">
+				<thead class="thead-list">
+					<tr>
+						<th class="no">번호</th>
+						<th class="titles">제목</th>
+						<th class="name">작성자</th>
+						<th class="date">등록일</th>
+						<th class="uphit">조회수</th>
+						<th class="imgs">이미지 이름</th>
+						<th class="imgs">이미지 파일</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+				<tr th:each="board : ${list}">
+					<td th:text="${board.ino}" class="no">
+					<td><a th:href="@{/iboard/getBoard(ino=${board.ino})}"
+						th:text="${board.ititle}" class="title"></a></td>
+
+					<td th:text="${board.iname}" class="name"/>
+					<td th:text="${#dates.format(board.iwdate,'yyyy-MM-dd hh:mm')}" class="date"/>
+					
+					
+					<td th:text="${board.iuphit}" class="uphit"/>
+					<td th:text="${board.ibfile}" class="imgs"/>
+					<td><img src="./img/" +value></td>
+				</tr>
+				</tbody>
+			</table>
+
+<script type="text/javascript">
+	var value = $('{board.ibfile}.val();
+</script>
+
+	</div>
+	</article>
+	<footer th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mini.myleaf.mapper.BoardMapper">
+
+    <select id="getAllBoardList" resultType="com.mini.myleaf.bean.Board">
+      select * 
+      from leafboard order by groupNo desc, groupOrder asc
+    </select>
+    
+    <select id="getBoard" resultType="com.mini.myleaf.bean.Board" parameterType="com.mini.myleaf.bean.Board">
+      select *  from leafboard where no = #{no}
+    </select>
+   
+    <insert id="insertBoard" parameterType="com.mini.myleaf.bean.Board">
+      insert into leafboard(no, name, title, contents, upHit, wdate, bFile, bParent)
+      values(no_seq.nextval, #{name}, #{title},#{contents}, 1, sysdate, null, 1)  
+    </insert>
+    
+    <update id="updateBoard"   parameterType="com.mini.myleaf.bean.Board" >
+      update leafboard set title = #{title}, contents = #{contents}, uphit =#{upHit}  where no = #{no}
+    </update>
+ 
+    <select id="detailBoard" parameterType="com.mini.myleaf.bean.Board">
+       select no, title, name, contents, wdate, uphit from leafboard where no = #{no}
+    </select>
+    
+    <delete id="deleteBoard" parameterType="int">
+       delete from leafboard where no = #{no}
+    </delete>
+    
+    <insert id="answerBoard" parameterType="com.mini.myleaf.bean.Board">
+       insert into leafboard (no,name, title, contents, uphit, wdate, bfile, groupno, depth, grouporder )
+       VALUES (no_seq.nextval, #{name}, #{title}, #{contents}, #{upHit}, sysdate, null,#{groupNo}, #{depth}, #{groupOrder})    
+    </insert>
+    
+    <insert id="orginInsertBoard" parameterType="com.mini.myleaf.bean.Board">
+        insert into leafboard(no,name,title,contents,uphit,wdate,bfile, groupno,depth,grouporder)
+        values(no_seq.nextval, #{name}, #{title},#{contents},1, sysdate, null, no_seq.currval, 1, 0)
+    </insert>
+
+    <update id="updateAnswer"   parameterType="com.mini.myleaf.bean.Board">
+       update leafboard set groupOrder = groupOrder+1 
+       where groupNo = #{groupNo} and groupOrder > #{groupOrder}
+    </update>
+
+</mapper>    

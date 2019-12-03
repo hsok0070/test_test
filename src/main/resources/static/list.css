@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+#top{
+	width: 90%;
+	right: 50px;
+	display: flex;
+	align-items: center;
+	height: 8vh;
+	margin-left: 30px;
+	font-family: 'Jua', sans-serif;
+}
+
+#top #top-title{
+	float: left;
+	width: 60%;	
+	font-family: 'Jua', sans-serif;
+	font-size: 18px;
+}
+#top #top-search{
+	float: left;
+	width: 23%;
+	font-size: 22px;
+}
+#top-search input{
+	width: 200px;
+	height: 30px;
+	font-size: 20px;
+}
+#top #write{
+	float: right;
+	font-size: 20px;
+	width: 200px;
+	font-family: 'Jua', sans-serif;
+}
+#twrite{
+	float: right;
+	width: 30%;
+	font-size: 22px;
+	text-align:right;
+	font-family: 'Jua', sans-serif;
+}
+
+
+#wrap-table{
+	width: 80%;
+	margin: 33px;
+}
+
+#tlist{
+	width: 100%;
+	align-self: center;
+	text-align: center;
+	border-collapse: collapse;
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+#tlist tbody{
+	background-color: #f8f8f8;
+}
+#blist tbody{
+	background-color: #f8f8f8;
+}
+#tlist tbody:nth-child(odd){
+	background-color: white;
+}
+
+#tlist tbody :hover{
+	background-color: #ddd;
+}
+#blist{
+	width: 100%;
+	align-self: center;
+	text-align: center;
+	border-collapse: collapse;
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+#blist tbody tr:nth-child(odd){
+	background-color: #f2f2f2;
+}
+
+.thead-list{
+	font-size: 18px;
+    color: black;
+    line-height: 3;
+    background-color: white;
+    font-family: 'Jua', sans-serif;
+    font-size: 22px;
+}
+#blist tbody tr:hover{
+	background-color: #ddd;
+}
+
+
+#tlist tr{
+	line-height: 3;
+}
+#blist tr{
+	line-height: 3;
+}
+
+.no{
+	width: 3em;
+}
+
+.name{
+	width: 5em;
+}
+
+.content{
+	width: 10em;
+}
+.title{
+	width: 8em;
+	text-align: left;
+}
+.titles{
+	width: 8em;
+}
+.uphit{
+	width: 3em;
+}
+
+.date{
+	width: 5em;
+}
+.imgs{
+	width: 5em;
+}
+
+.buttons{
+	width: 3em;
+}
+.btn, .btn-write{
+	display: inline-block;
+	padding: 8px 15px;
+	font-size: 22px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #fe9a8b;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 4px #999;
+	margin-right: 50px;
+}
+
+.btn:hover, .btn-write{
+	background-color: #f97b94;
+}
+
+.btn:active, .btn-write{
+	background-color: #f97b94;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+#top-right{
+	text-align: right;
+	width: 29%;
+	height: 8vh;
+	font-family: 'Jua', sans-serif;
+}
+
+.btn-write{
+	margin-right: 0;
+	font-family: 'Jua', sans-serif;
+	margin-top: 10px;
+}

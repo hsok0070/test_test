@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert</title>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}" href="../../static/main.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/insert.css}" href="../../static/insert.css"/>
+
+
+</head>
+<body >
+	
+<header th:replace="fragments/header::header"></header>
+	
+	<nav th:replace="fragments/nav::nav"></nav>
+	
+	<article>
+	
+	<div id="top">
+		<h2>방명록 수정 ^0^</h2>
+	</div>
+
+	<div id="wrap-table" th:each="data: ${detail}">
+		<form action="/greet/greetUpdateProc/" th:attrappend="action=${data.gno}" method="post">
+
+			<div class="form-group">
+				<label for="gname">작성자</label> <br>
+				<input type="text" id="gname" name="gname" th:value="${data.gname}">
+			</div>
+			
+			<div class="form-group">
+				<label for="greet"></label><br>
+				<textarea rows="2" cols="1" id="greet" name="greet">[[${data.greet}]]</textarea>
+			</div>
+			<input type="hidden" id="gno" name="gno" th:value="${data.gno}">
+			<input type="date" hidden="hidden" id="gdate" th:value="${data.gdate}">
+			
+			<button type="submit" class="btn">수정</button>
+			<button type="button" class="btn" onclick="location.href='/greet/glist'">취소</button>
+		</form>
+	</div>
+	</article>
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	
+
+	<form action="" method="POST" enctype="multipart/form-data" th:object="${fileVO}">
+		
+		Description: <br><input th:field="*{description}" style="width:300px;"/>
+		
+		<br><br>
+		
+		File: <br><input th:filed="*{fileData}" type="file"/>
+		<br>
+				
+		<input type="submit" value="upload"/>
+	</form>
+
+</body>
+</html>

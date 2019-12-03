@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/insert2.css}"
+	href="../../static/insert2.css" />
+
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			<div id="top-title">
+				<h1>상담 답변</h1>
+			</div>
+			<div id="top-search">
+				<a th:href="@{./boardList}">글목록 </a>
+			</div>
+		</div>
+
+		<div id="wrap-table">
+			<form th:action="@{answerSend}" method="post">
+				<input name="no" type="hidden" th:value="${answer.no}"> 
+				<input name="upHit" type="hidden" th:value="${answer.upHit}"> 
+				<input name="groupNo" type="hidden" th:value="${answer.groupNo}">
+				<input name="depth" type="hidden" th:value="${answer.depth}">
+				<input name="groupOrder" type="hidden" th:value="${answer.groupOrder}">
+				
+				<table id="tbl">
+					<tr>
+						<td th:text="제목" width="80"></td>
+						<td><input name="title" type="text" th:value="[답글] + ${answer.title}" class="inputs"></td>
+					</tr>
+
+					<tr>
+						<td th:text="작성자"></td>
+						<td><input name="name" type="text" class="inputs"></td>
+					</tr>
+					<tr>
+						<td th:text="내용"></td>
+						<td><textarea rows="10" cols="50" name="contents" id="contents"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+						<button type="submit" class="btn">답변 등록</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+
+		</div>
+
+	</article>
+
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+ 
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}" href="../../static/main.css"/>
+ <style type="text/css">
+ h1{
+ 	font-size: 30px;
+ }
+ </style>
+ 
+</head>
+<body>
+ 
+    <header th:replace="fragments/header::header"></header>
+ 
+    <section>
+    
+    <nav th:replace="fragments/nav::nav"></nav>
+
+        <article>
+          	<img alt="" src="leaff.png" width="62%" >
+        </article>
+    </section>
+ 
+    <footer th:replace="fragments/footer::footer"></footer>
+ 
+</body>
+</html>

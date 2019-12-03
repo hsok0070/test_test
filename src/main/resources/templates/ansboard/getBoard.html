@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>게시글 상세</title>
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/insert3.css}"
+	href="../../static/insert3.css" />
+
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			<div id="top-title">
+				<h1>상담 글 상세보기</h1>
+			</div>
+			<div id="top-search">
+				<a th:href="@{./boardList}" class="top-link">글목록 </a>
+			</div>
+
+		</div>
+
+		<div id="wrap-table">
+
+			<form th:action="@{updateDetail}" method="post">
+				<input name="no" type="hidden" th:value="${board.no}">
+				<table id="tbl">
+					<tr>
+						<td th:text="제목" width="50px;"></td>
+						<td><input name="title" type="text" th:value="${board.title}"
+							class="inputs"></td>
+					</tr>
+					<tr>
+						<td th:text="작성자"></td>
+						<td><input type="text" name="name" th:value="${board.name}"
+							class="inputs"></td>
+					</tr>
+
+					<tr>
+						<td th:text="내용"></td>
+						<td> <textarea id="contents" name="contents">[[${board.contents}]]</textarea></td>
+
+					</tr>
+
+					<tr>
+						<td th:text="등록일"></td>
+						<td th:text="${board.wdate}"></td>
+					</tr>
+
+					<tr>
+						<td th:text="조회수"></td>
+						<td><input name="upHit" th:value="${board.upHit}"
+							class="inputs"></td>
+					</tr>
+
+					<tr>
+						<td colspan="2" align="center" id="btns">
+							<br><br>
+							<button type="submit" class="btn">수정</button> <a
+							th:href="@{./answerBoard(no=${board.no})}" class="btn"> 답변 </a> <a
+							th:href="@{./writeBoard}" class="btn">글 등록</a> <a
+							th:href="@{./deleteBoard(no=${board.no})}" class="btn">글 삭제</a>
+						</td>
+					</tr>
+
+				</table>
+			</form>
+		</div>
+	
+
+	</article>
+	<footer th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

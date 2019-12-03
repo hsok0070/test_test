@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+  
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}" href="../../static/main.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/insert2.css}" href="../../static/insert2.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+  
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<header th:replace="fragments/header::header"></header>
+	
+	<nav th:replace="fragments/nav::nav"></nav>
+	
+	<article>
+	
+		<div id="top">
+			<div id="top-title">
+				<h1>글 상세보기</h1>
+			</div>
+			<div id="top-search">
+				<a th:href="@{./boardlist}" class="top-link">글목록 </a>
+			</div>
+
+		</div>
+	<div id="wrap-table">
+	
+	<table id="mwtbl">
+	<tr>
+		<td th:text="제목" width="100px;"></td>
+		<td class="words"><th:block th:text="${view.b_title}"/></td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	
+	<tr>
+		<td th:text="작성자" width="50px;"></td>
+		<td class="words"><th:block th:text="${view.b_name}"/></td>		
+	</tr>
+		<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td th:text="내용" width="50px;"></td>
+		<td class="words"><th:block th:text="${view.b_content}"/></td>
+	</tr>
+	</table>
+	
+	<div id="btns">
+	
+	<div id="btns-d">
+	<form th:action="@{./boardview1}" >
+	<input type="hidden" name="b_no" th:value="${view.b_no}">
+	<button type="submit" class="btn">삭제</button>
+	</form>
+	</div>
+	
+	<div id="btns-e">
+	 <form th:action="@{update}" th:object="${view}">
+	<input type="hidden" name="b_no" th:field="*{b_no}">
+	<input type="hidden" name="b_title" th:field="*{b_title}">
+	<input type="hidden" name="b_content" th:field="*{b_content}">
+	<button type="submit" class="btn">수정</button>
+	</form> 
+	</div>
+	</div>
+	
+	<hr>
+
+	<div id="com">
+		
+	<form th:action="@{./boardview2}" name="commentform" >
+		<h1>댓글</h1>
+		<input type="hidden" name="c_bno" th:value="${view.b_no}">
+			
+		작성자:<input type="text" name="c_name"/>
+		댓글내용:<input type="text" name="c_content"/>
+		
+		<button type="submit" name="insertbtn">댓글쓰기</button>
+	</form>
+	<br>
+	
+	<th:block th:each="cli : ${commentlist}">
+		작성자 : <th:block th:text="${cli.c_name}" ></th:block>
+		댓글 : <th:block th:text="${cli.c_content}" ></th:block>
+		날짜 : <th:block th:text="${#dates.format(cli.c_calendar,'yyyy-MM-dd hh:mm')}" ></th:block><br/>
+		
+	</th:block>
+	</div>
+	</div>
+	</article>
+	
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

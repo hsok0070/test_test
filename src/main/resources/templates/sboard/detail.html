@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>상세 페이지</title>
+
+<style type="text/css">
+
+.form-group{
+	display: inline;
+	flex: auto;
+	
+}
+
+.dbtn{
+background-color: #f5f5f5;
+  color: black;
+  padding: 2px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 1px;
+  border-color: gray;
+  border-style: solid;
+  border-width: 0.5px;
+  font-size: 14px;
+}
+
+</style>
+</head>
+<body>
+	<div id="top">
+		<h2>게시글 상세페이지</h2>
+	</div>
+
+	<div class="container">
+		<form action="/sboard/detailUpdate/" th:attrappend="action=${detail.sno}" method="post">
+			<div class="form-group">
+				<label>제목</label><br> 
+				<span> [[${detail.stitle}]]</span>			
+			</div>
+			<br><br>
+			
+			<div class="form-group">
+				<label>작성자</label><br> 
+				<span> [[${detail.sname}]]</span>			
+			</div>
+			<br><br>
+			
+			<div class="form-group">
+				<label>조회수</label><br> 
+				<span> [[${detail.suphit}]]</span>			
+			</div>
+			<br><br>
+			
+			<div class="form-group">
+				<label>내용</label><br> 
+				<span> [[${detail.scontent}]]</span>			
+			</div>
+			<br><br>
+
+			<button type="submit" class="btn btn-primary">수정</button>
+			<a href="/sboard/delete/" th:attrappend="href=${detail.sno}" class="dbtn"> 삭제하기</a>
+			<button type="button" class="btn btn-primary" onclick="location.href='/sboard/list'">글 목록</button>
+		</form>
+
+	</div>
+	<div>
+
+	</div>
+
+</body>
+</html>

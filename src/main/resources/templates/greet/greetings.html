@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert</title>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}" href="../../static/main.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/insert.css}" href="../../static/insert.css"/>
+
+</head>
+<body id="background">
+	
+	<header th:replace="fragments/header::header"></header>
+	
+	<nav th:replace="fragments/nav::nav"></nav>
+	
+	<article>
+	
+	<div id="top">
+		<h2>방명록 작성 ^0^</h2>
+	</div>
+
+	<div id="wrap-table">
+		<form action="#" th:action="@{/greet/greetingsProc}" method="post" id="insertForm">
+
+			<div class="form-group">
+				<label for="gname">작성자</label> <br>
+				<input type="text" id="gname" name="gname" placeholder="이름을 입력하세요" />
+			</div>
+			<div class="form-group">
+				<label for="greet"></label><br>
+				<textarea id="greet" name="greet" placeholder="방명록을 작성해주세요~!"></textarea>
+			</div>
+
+			<button type="submit" class="btn">등록</button>
+			<button type="reset" class="btn">취소</button>
+
+		</form>
+
+	</div>
+	</article>
+	
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+</html>

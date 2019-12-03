@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+/* header */
+header {
+	display: flex;
+	background: linear-gradient(to right, #f97b94, #fe9a8b);
+	height: 10vh;
+	align-items: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+}
+
+.logo-container {
+	display: flex;
+	flex: 1;
+}
+
+.logo {
+	margin: 5px 0 5px 30px;
+	font-size: 22px;
+	color: white;
+	text-decoration: none;
+	font-family: 'Jua', sans-serif;
+	font-weight: 100;
+	font-size: 30px;
+}
+
+.logo:hover {
+	text-decoration: underline;
+}
+
+.imgg{
+	
+}
+
+/* nav */
+nav {
+	position: fixed;
+	top: 10vh;
+	left: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #151e2f;
+	height: 83vh;
+	
+}
+
+li a {
+	display: inline-block;
+	color: white;
+	padding: 8px 16px;
+	text-decoration: none;
+	font-family: 'Jua', sans-serif;
+	font-size: 25px;
+	font-weight: lighter;
+	width: 200px;
+	line-height: 2.3;
+}
+
+/* Change the link color on hover */
+li a:hover {
+	background-color: #53a3a3;
+	color: white;
+}
+
+/* article */
+article{
+	position: fixed;
+	top: 10vh;
+	left: 200px;
+	width: 100%;
+	background-color: #f0f3f5;
+	height: 100%;
+	text-align: center;
+}
+
+
+/* footer */
+#footer {
+	position: fixed;
+	height: 8vh;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #292c4e;
+	color: white;
+	text-align: center;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>update detail</title>
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/insert2.css}"
+	href="../../static/insert2.css" />
+
+</head>
+<body>
+
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			<div id="top-title">
+				<h1>게시글 수정</h1>
+			</div>
+		</div>
+
+		<div id="wrap-table">
+			<form th:action="@{updateBoardAction}" method="post">
+				<input type="hidden" name="no" th:value="${uboard.no}">
+				
+				<table id="tbl">
+					<tr>
+						<td th:text="제목" width="80"></td>
+						<td><input name="title" type="text" th:value="${uboard.title}" class="inputs"></td>
+					</tr>
+					<tr>
+						<td th:text="작성자"></td>
+						<td th:text="${uboard.name}" class="inputs"></td>
+					</tr>
+
+					<tr>
+						<td th:text="내용"></td>
+						<td><textarea id="contents" name="contents">[[${board.contents}]]</textarea></td>
+					</tr>
+
+					<tr>
+						<td th:text="조회수"></td>
+						<td th:text="${uboard.upHit}" class="inputs"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+						<button type="submit" class="btn">수정</button>
+						</td>
+					</tr>
+				</table>
+
+			</form>
+
+		</div>
+
+	</article>
+
+
+	<footer th:replace="fragments/footer::footer"></footer>
+
+</body>
+
+
+</html>

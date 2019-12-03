@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/insert2.css}"
+	href="../../static/insert2.css" />
+
+<head>
+<meta charset="utf-8">
+<title>게시글 상세</title>
+</head>
+<body>
+	
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			<div id="top-title">
+				<h1>게시글 상세보기</h1>
+			</div>
+			<div id="top-search">
+				<a th:href="@{/iboard/getBoardList}"> 글 목록 </a>
+			</div>
+
+		</div>
+
+		<div id="wrap-table">
+	
+	<input name="no" type="hidden" th:value="${board.ino}">
+	
+	<table id="mwtbl">
+		<tr>
+			<td th:text="제목"></td>
+			<td th:text="${board.ititle}" class="words"></td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>
+		<tr>
+			<td th:text="작성자"></td>
+			<td th:text="${board.iname}" class="words"></td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>
+
+		<tr>
+			<td th:text="내용"></td>
+			<td name="icontents" th:text="${board.icontents}" class="words"></td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>
+		<tr>
+			<td th:text="등록일"></td>
+			<td th:text="${board.iwdate}" class="words"></td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>
+		<tr>
+			<td th:text="조회수"></td>
+			<td th:text="${board.iuphit}" class="words"></td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>
+		<tr>
+			<td th:text="이미지"></td>
+			<td th:text="${board.ibfile}" class="words"></td>
+		</tr>
+	</table>
+
+	<br><br>
+	<a th:href="@{/iboard/deleteBoard(ino=${board.ino})}" class="btn"> 글 삭제 </a>
+	
+	</div>
+	
+
+	</article>
+	<footer th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

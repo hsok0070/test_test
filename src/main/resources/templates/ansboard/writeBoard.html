@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>writeBoard</title>
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}"
+	href="../../static/main.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/insert.css}"
+	href="../../static/insert.css" />
+
+</head>
+
+<body>
+	<header th:replace="fragments/header::header"></header>
+
+	<nav th:replace="fragments/nav::nav"></nav>
+
+	<article>
+
+		<div id="top">
+			<div id="top-title">
+				<h1>상담글 등록</h1>
+			</div>
+			<div id="top-search">
+				<a th:href="@{./boardList}">글목록 </a>
+			</div>
+		</div>
+
+		<div id="wrap-table">
+			<form th:action="writeBoardAction" method="post" id="insert">
+				<table>
+					<tr>
+						<td th:text="제목"></td>
+						<td><input name="title" type="text"></td>
+					</tr>
+
+					<tr>
+						<td th:text="작성자"></td>
+						<td><input name="name" type="text"></td>
+					</tr>
+					<tr>
+						<td th:text="내용"></td>
+						<td><textarea rows="12" cols="100" name="contents" id="txt"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<button type="submit" class="btn">등록</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+	</article>
+
+
+	<footer th:replace="fragments/footer::footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
